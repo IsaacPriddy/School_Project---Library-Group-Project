@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>About Page</h1>
+    <br>
+    <article class="media content-section">
+      <div class="media-body">
+        <center>
+          <h3 class="article-title">CIS422 Project #2: BookBucket</h3>
+        </center>
+        <br>
+        <h4>Motivation</h4>
+        <p>
+            This application is meant to be a central resource so that any student or teacher can access the books
+        that are required for any given class. In the case of a teacher they would also be able to add or remove
+        classes they are teaching in a given term and add or remove books for individual classes they are teaching.
+        The hope is that users will also be given a resource telling them where to find books in the case that the
+        school does not have any virtual copies.
+        </p>
+        <h4>Tenets</h4>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-light">
+                Allow Students to read their textbooks online and/or find resources to locate and rent or purchase the book
+                elsewhere.
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Allow Teachers to read the instructor copy of any book they require as well as add or remove books from
+                classes that they are teaching.
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Allow Admins the ability to add or remove students/teachers/classes/books to their tables on the database
+                if they are needed to be at last minute.
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Allow anyone the ability to see the list of books that are available and even refine it down to those of
+                classes they have taken in the past.
+            </li>
+            <li class="list-group-item list-group-item-light">
+                Allow anyone with access to one of the virtual books to take snapshots of page resources but not allow them
+                to download the whole pdf.
+            </li>
+        </ul>
+      </div>
+    </article>
+{% endblock content %}

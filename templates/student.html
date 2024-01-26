@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+<!-- left section of page -->
+{% block content %}
+    <h1>Student Resources</h1>
+	<br>
+	<!-- make a table for each class -->
+	{% for class_books in books %}
+		<article class="media content-section">
+		  <div class="media-body">
+			<!-- title with class name -->
+			<h3>{{ class_books }}</h3>
+			  <table class="table">
+			  <thead>
+			  	<!-- entries in table -->
+				<tr>
+				  <th scope="col">ISBN</th>
+				  <th scope="col">Book Name</th>
+				  <th scope="col">#Available</th>
+				</tr>
+			  </thead>
+			  <tbody>
+			  	<!-- add entries for each book in class -->
+			  	{% for book in books[class_books] %}
+					<tr>
+					  <th scope="row">
+						  <a class="article-title" href="#">{{ book[0][0] }}</a>
+					  </th>
+					  <td>{{ book[0][1] }}</td>
+					  <td>{{ book[0][5] }}</td>
+					</tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+		  </div>
+		</article>
+	{% endfor %}
+{% endblock content %}

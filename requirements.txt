@@ -1,0 +1,8 @@
+pandas      # pip install pandas
+sqlite3     # Should be standard, if not: pip install pysqlite3
+flask       # pip install flask
+flask-wtf   # pip install flask-wtf
+flask-login # pip install flask-login
+
+If all that is done, keep all the files together in one folder and run server.py, which should give the linked
+website to test the project.

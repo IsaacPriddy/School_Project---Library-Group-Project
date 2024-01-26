@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Available Resources</h1>
+    <br>
+    <article class="media content-section">
+      <div class="media-body">
+          <table class="table">
+          <thead>
+          <!-- entries to table of available books -->
+            <tr>
+              <th scope="col">ISBN</th>
+              <th scope="col">Book Name</th>
+              <th scope="col">#Available</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- add entry for each book -->
+            {% for book in books %}
+                <tr>
+                  <th scope="row">
+                      <!-- only link to access books when user in authenticated -->
+                      {% if current_user.is_authenticated %}
+                        <a class="article-title" href="#">{{ book[0] }}</a>
+                      {% else %}
+                        {{ book[0] }}
+                      {% endif %}
+                  </th>
+                  <td>{{ book[1] }}</td>
+                  <td>{{ book[5] }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </article>
+    <!-- tell user to login to access books when not logged in -->
+    {% if not current_user.is_authenticated %}
+        <p>Login to access resources.</p>
+    {% endif %}
+{% endblock content %}

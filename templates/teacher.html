@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+<!-- left section of page -->
+{% block content %}
+    <h1>Teacher Portal</h1>
+    <br>
+    <!-- make a table for each class -->
+	{% for class_books in books %}
+		<article class="media content-section">
+		  <div class="media-body">
+            <!-- title with class name -->
+			<h3>{{ class_books }}</h3>
+			  <table class="table">
+			  <thead>
+                <!-- entries in table -->
+				<tr>
+				  <th scope="col">ISBN</th>
+				  <th scope="col">Book Name</th>
+				  <th scope="col">#Available</th>
+				</tr>
+			  </thead>
+			  <tbody>
+                <!-- add entries for each book in class -->
+			  	{% for book in books[class_books] %}
+					<tr>
+					  <th scope="row">
+                          <a class="article-title" href="#">{{ book[0][0] }}</a>
+                      </th>
+					  <td>{{ book[0][1] }}</td>
+					  <td>{{ book[0][5] }}</td>
+					</tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+		  </div>
+		</article>
+	{% endfor %}
+{% endblock content %}
+<!-- right side-menu section of page -->
+{% block content_section %}
+<div class="content-section">
+    <h3>Add/Remove Books</h3>
+    <form method="POST" action="">
+        <fieldset class="form-group">
+            <!-- text entry of inserting crn -->
+            <div class="form-group">
+                {{ form.crn.label(class="form-control-label") }}
+                {% if form.crn.errors %}
+                    {{ form.crn(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.crn.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.crn(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <!-- text entry of inserting isbn -->
+            <div class="form-group">
+                {{ form.isbn.label(class="form-control-label") }}
+                {% if form.isbn.errors %}
+                    {{ form.isbn(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.isbn.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.isbn(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <!-- dropdown menu for selecting what action to take (add/remove) -->
+            <div class="form-group">
+                {{ form.action.label(class="form-control-label") }}
+                {% if form.action.errors %}
+                    {{ form.action(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.action.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.action(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <!-- submit button -->
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock content_section %}
